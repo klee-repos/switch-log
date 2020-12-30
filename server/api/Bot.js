@@ -26,7 +26,7 @@ var registerUser = async (
   }
 };
 
-class Identity {
+class Bot {
   constructor(
     db,
     senderNumber,
@@ -103,7 +103,7 @@ class Identity {
             },
             { merge: true }
           );
-        message = "message logged 📒";
+        message = "👍 message logged";
       } else {
         // ask sender to register
         message = await registerUser(
@@ -122,4 +122,4 @@ class Identity {
   }
 }
 
-export default Identity;
+export default Bot;

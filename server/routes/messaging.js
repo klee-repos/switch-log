@@ -1,5 +1,5 @@
 import express from "express";
-import Identity from "../api/Identity";
+import Bot from "../api/Bot";
 const router = express.Router();
 const MessagingResponse = require("twilio").twiml.MessagingResponse;
 
@@ -13,8 +13,7 @@ router.post("/sms", async (req, res) => {
     let fromState = req.body.FromState;
     let fromCity = req.body.FromCity;
     let fromCountry = req.body.FromCountry;
-    // check sender state
-    let identity = new Identity(
+    let bot = new Bot(
       db,
       senderNumber,
       senderMessage,
@@ -23,10 +22,10 @@ router.post("/sms", async (req, res) => {
       fromCountry
     );
     // check if sender is registered
-    message = await identity.checkRegistration();
+    message = await bot.checkRegistration();
     // log message if sender is registered
     if (!message) {
-      message = await identity.logMessage();
+      message = await bot.logMessage();
     }
     // twilio sms
     const twiml = new MessagingResponse();
