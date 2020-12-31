@@ -7,6 +7,10 @@ export function createUserStore(){
     isLoggedIn: null,
     setIsLoggedIn(isLoggedIn) {
       this.isLoggedIn = isLoggedIn
+    },
+    senderMessages: [],
+    setSenderMessages(senderMessages) {
+      this.senderMessages = senderMessages;
     }
   }
 }

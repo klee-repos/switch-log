@@ -71,7 +71,7 @@ body {
 .navbar-logo-text {
   font-size: 20pt;
   line-height: 150%;
-  color: white;
+  color: black;
   cursor: text;
 }
 
@@ -94,5 +94,33 @@ body {
   width: 100px;
   cursor: pointer;
   color: white;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+/* logs */
+
+.message-table {
+  flex-direction: column;
+  width: 100%;
+}
+
+.message-table-header {
+  background-color: #2263F9;
+  padding: 10px 5px 10px 5px;
+  font-size: 16px;
+  border-radius: 4px;
+  color: white;
+}
+
+.message-table-card {
+  text-align: left;
+  
+  
+}
+
+.message-table-cell {
+  padding: 10px 10px 10px 10px;
+  font-weight: normal;
   font-size: 14px;
 }

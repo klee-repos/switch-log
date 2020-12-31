@@ -3,6 +3,10 @@ import Bot from "../api/Bot";
 const router = express.Router();
 const MessagingResponse = require("twilio").twiml.MessagingResponse;
 
+// authentication
+const auth = require("../auth");
+router.use(auth);
+
 router.post("/sms", async (req, res) => {
   try {
     let db = req.app.get("db");

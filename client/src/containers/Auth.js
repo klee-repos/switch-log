@@ -3,7 +3,7 @@ import { useUserStore } from "../context/UserContext";
 import { useObserver } from "mobx-react";
 import Home from "./Home";
 import Login from "./Login";
-import Loading from './Loading';
+import Loading from "./Loading";
 
 import { Magic } from "magic-sdk";
 const magic = new Magic(process.env.REACT_APP_MAGIC_API_KEY);
@@ -17,6 +17,7 @@ const Auth = () => {
       userStore.setIsLoggedIn(await magic.user.isLoggedIn());
       if (userStore.isLoggedIn === true) {
         let userMetadata = await magic.user.getMetadata();
+        console.log(userMetadata)
         userStore.setEmail(userMetadata.email);
       }
     }

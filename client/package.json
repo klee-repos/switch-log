@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
+    "http-proxy-middleware": "^1.0.6",
     "magic-sdk": "^4.0.2",
     "mobx": "^6.0.4",
     "mobx-react": "^7.0.5",
@@ -14,6 +15,7 @@
     "react-lottie-player": "^1.1.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-table": "^7.6.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

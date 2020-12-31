@@ -4,7 +4,7 @@ import lottieJson from "../assets/lf30_editor_ki04jrpp.json";
 const Loading = () => {
   return (
     <div className="home-box">
-       <Lottie
+      <Lottie
         loop
         animationData={lottieJson}
         play

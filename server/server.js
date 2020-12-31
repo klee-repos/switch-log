@@ -30,22 +30,25 @@ app.use(function (req, res, next) {
   next();
 });
 
-// authentication
-const auth = require('./auth');
-app.use(auth);
-
 // =========== Routes ===========
-import messaging from './routes/messaging';
-app.use('/messaging', messaging);
+import messaging from "./routes/messaging";
+import insight from "./routes/insight";
+app.use("/messaging", messaging);
+app.use("/insight", insight);
 
 // =========== Firestore ===========
-import Firestore from './api/Firestore';
+import Firestore from "./api/Firestore";
 let firestore = new Firestore(process.env.GOOGLE_PROJECT_ID);
-let initFirebase = async() => {
+let initFirebase = async () => {
   let db = await firestore.initializeFirestore();
-  app.set('db', db);
-}
+  app.set("db", db);
+};
 initFirebase();
+
+// Magic.link
+import { Magic } from '@magic-sdk/admin';
+const magic = new Magic(process.env.MAGIC_SECRET_KEY);
+app.set("magic", magic);
 
 // =========== INDEX.HTML ===========
 app.get("/", function (request, response) {

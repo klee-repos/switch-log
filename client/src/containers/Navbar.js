@@ -7,7 +7,6 @@ const Navbar = () => {
 
   // Magic logout handler
   const handleLogout = async () => {
-    console.log('called')
     await magic.user.logout();
     userStore.setIsLoggedIn(await magic.user.isLoggedIn());
     userStore.setEmail("");
@@ -17,7 +16,7 @@ const Navbar = () => {
     <div className="top-navbar">
       <div className="top-navbar-left">
         <div className="navbar-logo">
-          <span className="navbar-logo-text">Playground</span>
+          <span className="navbar-logo-text">Switch Log</span>
         </div>
       </div>
       <div className="top-navbar-right">
