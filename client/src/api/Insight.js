@@ -20,6 +20,23 @@ class Insight {
       return null;
     }
   }
+
+  async updateMessageLogs(senderMessages) {
+    try {
+      let results = await axios({
+        method: 'post',
+        url:`/insight/update-message-logs`,
+        data: {
+          did: this.did,
+          senderMessages
+        }
+      })
+      return results.data;
+    } catch(e) {
+      console.log(e)
+      return null;
+    }
+  }
 }
 
 export default Insight;

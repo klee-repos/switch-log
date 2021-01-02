@@ -6,6 +6,12 @@ body {
   outline:0;
 }
 
+textarea {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+}
+
 .home-container {
   display: flex;
   flex-direction: row;
@@ -106,11 +112,13 @@ body {
 }
 
 .message-table-header {
-  background-color: #2263F9;
+  /* background-color: #2263F9; */
   padding: 10px 5px 10px 5px;
   font-size: 16px;
-  border-radius: 4px;
-  color: white;
+  /* border-radius: 4px; */
+  /* color: white; */
+  /* border-bottom: 1px solid; */
+  text-align: left;
 }
 
 .message-table-card {
@@ -123,4 +131,26 @@ body {
   padding: 10px 10px 10px 10px;
   font-weight: normal;
   font-size: 14px;
+}
+
+/* logs container */
+
+.logs-container {
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+  padding: 20px 20px 20px 20px;
+  overflow-y: auto;
+  height: 70%;
+  width: 90vw;
+}
+
+.message-table-textarea {
+  height: 100%;
+  width: 95%;
+  resize: none;
+  border-radius: 8px;
+  border: 1px solid rgba(170, 170, 170, 0.2);
+  padding: 10px 10px 10px 10px;
 }

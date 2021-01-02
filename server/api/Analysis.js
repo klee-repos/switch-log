@@ -1,4 +1,16 @@
-import _ from 'lodash';
+import _ from "lodash";
+
+const findUser = async (db, email) => {
+  let found = [];
+  let snapshotUsers = await db
+    .collection("switchlog-users")
+    .where("email", "==", email)
+    .get();
+  snapshotUsers.forEach((doc) => {
+    found.push(doc.data());
+  });
+  return found;
+};
 
 class Analysis {
   constructor(db, email) {
@@ -8,14 +20,7 @@ class Analysis {
 
   async getMessageLogs() {
     try {
-      let found = [];
-      let snapshotUsers = await this.db
-        .collection("switchlog-users")
-        .where("email", "==", this.email)
-        .get();
-      snapshotUsers.forEach((doc) => {
-        found.push(doc.data());
-      });
+      let found = await findUser(this.db, this.email);
       let senderNumber = found[0].senderNumber;
       let userLogs;
       let snapshotUserLogs = await this.db
@@ -24,11 +29,29 @@ class Analysis {
         .get();
       if (snapshotUserLogs.exists) {
         userLogs = snapshotUserLogs.data();
-        console.log(userLogs)
         userLogs.logs = _.sortBy(userLogs.logs, ["timestamp"]).reverse();
       }
-      console.log(userLogs)
-      return userLogs
+      return userLogs;
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
+  }
+
+  async updateMessageLogs(logs) {
+    try {
+      let found = await findUser(this.db, this.email);
+      let senderNumber = found[0].senderNumber;
+      let results = await this.db
+        .collection("switchlog-user-logs")
+        .doc(senderNumber)
+        .set(
+          {
+            logs,
+          },
+          { merge: true }
+        );
+      return results;
     } catch (e) {
       console.log(e);
       return null;

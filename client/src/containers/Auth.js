@@ -13,7 +13,7 @@ const Auth = () => {
   // const [logStatus, setLogStatus] = React.useState(false)
 
   useEffect(() => {
-    async function test() {
+    async function authInit() {
       userStore.setIsLoggedIn(await magic.user.isLoggedIn());
       if (userStore.isLoggedIn === true) {
         let userMetadata = await magic.user.getMetadata();
@@ -21,7 +21,7 @@ const Auth = () => {
         userStore.setEmail(userMetadata.email);
       }
     }
-    test();
+    authInit();
   }, []);
 
   return useObserver(() => (
