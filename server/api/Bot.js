@@ -53,8 +53,7 @@ class Bot {
       if (snapshot.exists) {
         // register sender name
         if (snapshot.data().senderState === "registration") {
-          message =
-            `Nice to meet you, ${this.senderMessage}! Tell me when you start new tasks. Then shoot me another text when you finish them. I'm here to track where you spend your time.`;
+          message = `Nice to meet you, ${this.senderMessage}! Tell me when you start new tasks. Then shoot me another text when you finish them. I'm here to track where you spend your time.`;
           this.db.collection("switchlog-users").doc(this.senderNumber).set(
             {
               senderName: this.senderMessage,
@@ -80,7 +79,7 @@ class Bot {
     }
   }
 
-  async logMessage() {
+  async logMessage(dfResults) {
     try {
       let message;
       let snapshot = await this.db
@@ -91,7 +90,9 @@ class Bot {
         let date = new Date();
         let data = {
           timestamp: date.toISOString(),
-          senderMessage: this.senderMessage
+          senderMessage: this.senderMessage,
+          intent: dfResults.intent,
+          confidence: dfResults.confidence,
         };
         this.db
           .collection("switchlog-user-logs")

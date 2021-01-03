@@ -33,8 +33,10 @@ app.use(function (req, res, next) {
 // =========== Routes ===========
 import messaging from "./routes/messaging";
 import insight from "./routes/insight";
+import prediction from "./routes/prediction";
 app.use("/messaging", messaging);
 app.use("/insight", insight);
+app.use("/prediction", prediction);
 
 // =========== Firestore ===========
 import Firestore from "./api/Firestore";
