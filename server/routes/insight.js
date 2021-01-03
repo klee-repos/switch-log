@@ -9,7 +9,7 @@ const verifyUser = async (magic, did) => {
     const issuer = magic.token.getIssuer(did);
     const metadata = await magic.users.getMetadataByIssuer(issuer);
     console.log(metadata);
-    return [ issuer, metadata ];
+    return [issuer, metadata];
   } catch (e) {
     console.log(e);
     return null;

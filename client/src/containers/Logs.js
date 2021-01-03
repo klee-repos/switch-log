@@ -40,6 +40,8 @@ const Logs = () => {
               <tr className="message-table-column">
                 <th className="message-table-header">Message</th>
                 <th className="message-table-header">Timestamp</th>
+                <th className="message-table-header">Intent</th>
+                <th className="message-table-header">Confidence</th>
               </tr>
             </thead>
             <tbody className="message-table-body">
@@ -58,6 +60,10 @@ const Logs = () => {
                     />
                   </th>
                   <th className="message-table-cell">{message.timestamp}</th>
+                  <th className="message-table-cell">{message.intent}</th>
+                  <th className="message-table-cell">
+                    {message.confidence.toFixed(2) * 100}%
+                  </th>
                 </tr>
               ))}
             </tbody>
