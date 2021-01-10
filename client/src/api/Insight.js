@@ -24,16 +24,32 @@ class Insight {
   async updateMessageLogs(senderMessages) {
     try {
       let results = await axios({
-        method: 'post',
-        url:`/insight/update-message-logs`,
+        method: "post",
+        url: `/insight/update-message-logs`,
         data: {
           did: this.did,
-          senderMessages
-        }
-      })
+          senderMessages,
+        },
+      });
       return results.data;
-    } catch(e) {
-      console.log(e)
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
+  }
+
+  async getSummary() {
+    try {
+      let results = await axios({
+        method: "post",
+        url: `/insight/get-summary`,
+        data: {
+          did: this.did
+        },
+      });
+      return results.data;
+    } catch (e) {
+      console.log(e);
       return null;
     }
   }

@@ -1,4 +1,5 @@
 import _ from "lodash";
+import { VariableInstance } from "twilio/lib/rest/serverless/v1/service/environment/variable";
 
 const findUser = async (db, email) => {
   try {
@@ -84,6 +85,36 @@ class Analysis {
           { merge: true }
         );
       return results;
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
+  }
+
+  async getLifeDesignSummary(messages) {
+    try {
+      let summary = {
+        health: 0,
+        work: 0,
+        play: 0,
+        love: 0,
+      };
+      let logs = _.sortBy(messages.logs, ["timestamp"]);
+      console.log(logs);
+      for (let l = 0; l < logs.length; l++) {
+        let startLog = logs[l];
+        let endLog = logs[l + 1];
+        if (startLog.intent !== "complete" && endLog) {
+          let dateStart = new Date(startLog.timestamp);
+          let dateEnd = new Date(endLog.timestamp);
+          var duration = Math.abs(dateEnd - dateStart) / 1000;
+          var durationInHours = (duration / 3600) % 24;
+          summary[startLog.intent] += Math.round(durationInHours * 100) / 100;
+          console.log(startLog, endLog);
+          console.log(`hours: ${durationInHours}`);
+        }
+      }
+      return summary;
     } catch (e) {
       console.log(e);
       return null;

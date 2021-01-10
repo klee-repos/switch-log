@@ -66,12 +66,13 @@ textarea {
   display: flex;
   width: 50%;
   align-items: center;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 20px;
 }
 
 .navbar-logo {
   display: flex;
   align-items: center;
+  width: 180px;
 }
 
 .navbar-logo-text {
@@ -86,7 +87,7 @@ textarea {
   width: 50%;
   align-items: center;
   justify-content: flex-end;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 20px 10px 10px;
 }
 
 .logout-button {
@@ -104,6 +105,17 @@ textarea {
   font-weight: 900;
 }
 
+.nav-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  color: grey;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 900;
+}
+
 /* logs */
 
 .message-table {
@@ -112,19 +124,13 @@ textarea {
 }
 
 .message-table-header {
-  /* background-color: #2263F9; */
   padding: 10px 5px 10px 5px;
   font-size: 16px;
-  /* border-radius: 4px; */
-  /* color: white; */
-  /* border-bottom: 1px solid; */
   text-align: left;
 }
 
 .message-table-card {
   text-align: left;
-  
-  
 }
 
 .message-table-cell {
@@ -153,4 +159,19 @@ textarea {
   border-radius: 8px;
   border: 1px solid rgba(170, 170, 170, 0.2);
   padding: 10px 10px 10px 10px;
+}
+
+.message-table-input {
+  height: 10px;
+  width: 50%;
+  border-radius: 8px;
+  border: 1px solid rgba(170, 170, 170, 0.2);
+  padding: 10px 10px 10px 10px;
+}
+
+/* life design summary */
+
+.summary-table {
+  flex-direction: column;
+  width: 100%;
 }

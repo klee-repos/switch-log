@@ -61,6 +61,22 @@ app.get("/", function (request, response) {
   }
 });
 
+app.get("/rawLogs", function (request, response) {
+  if (process.env.NODE_ENV === "production") {
+    response.sendFile(path.resolve("client", "build", "index.html"));
+  } else {
+    response.sendFile(path.resolve("client", "public", "index.html"));
+  }
+});
+
+app.get("/lifeDesignSummary", function (request, response) {
+  if (process.env.NODE_ENV === "production") {
+    response.sendFile(path.resolve("client", "build", "index.html"));
+  } else {
+    response.sendFile(path.resolve("client", "public", "index.html"));
+  }
+});
+
 // =========== SERVER ===========
 server.listen(process.env.PORT || 8080, function () {
   console.info("Node server started");

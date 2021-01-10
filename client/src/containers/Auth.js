@@ -17,7 +17,7 @@ const Auth = () => {
       userStore.setIsLoggedIn(await magic.user.isLoggedIn());
       if (userStore.isLoggedIn === true) {
         let userMetadata = await magic.user.getMetadata();
-        console.log(userMetadata)
+        console.log(userMetadata);
         userStore.setEmail(userMetadata.email);
       }
     }

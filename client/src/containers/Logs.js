@@ -20,6 +20,16 @@ const Logs = () => {
     insight.updateMessageLogs(userStore.senderMessages);
   };
 
+  const setIntent = async (e) => {
+    await userStore.updateAIntent(
+      e.target.id.split("-")[1],
+      document.getElementById(e.target.id).value
+    );
+    await userStore.updateAConfidence(e.target.id.split("-")[1], "n/a");
+    const insight = new Insight(did);
+    insight.updateMessageLogs(userStore.senderMessages);
+  };
+
   useEffect(() => {
     async function logsInit() {
       let generateIdToken = await magic.user.generateIdToken();
@@ -39,9 +49,9 @@ const Logs = () => {
             <thead className="message-table-head">
               <tr className="message-table-column">
                 <th className="message-table-header">Message</th>
-                <th className="message-table-header">Timestamp</th>
                 <th className="message-table-header">Intent</th>
                 <th className="message-table-header">Confidence</th>
+                <th className="message-table-header">Timestamp</th>
               </tr>
             </thead>
             <tbody className="message-table-body">
@@ -59,11 +69,17 @@ const Logs = () => {
                       onChange={setMessage}
                     />
                   </th>
-                  <th className="message-table-cell">{message.timestamp}</th>
-                  <th className="message-table-cell">{message.intent}</th>
                   <th className="message-table-cell">
-                    {message.confidence.toFixed(2) * 100}%
+                    <input
+                      className="message-table-input"
+                      id={"intent-" + index}
+                      key={"intent-" + index}
+                      value={message.intent}
+                      onChange={setIntent}
+                    />
                   </th>
+                  <th className="message-table-cell">{message.confidence}</th>
+                  <th className="message-table-cell">{message.timestamp}</th>
                 </tr>
               ))}
             </tbody>

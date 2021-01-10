@@ -8,6 +8,8 @@ const routes = (
     <Switch>
       <RouteContainer>
         <Route exact path="/" component={Auth} />
+        <Route exact path="/rawLogs" component={Auth} />
+        <Route exact path="/lifeDesignSummary" component={Auth} />
       </RouteContainer>
     </Switch>
   </Router>
